@@ -1,6 +1,6 @@
 import flatpickr from "flatpickr";
 import 'flatpickr/dist/flatpickr.min.css';
-import {Notify} from 'notiflix/build/notiflix-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const calendar = document.querySelector("#datetime-picker");
 const startBttn = document.querySelector("button[data-start]");
@@ -25,13 +25,13 @@ function convertMs(ms) {
     const hour = minute * 60;
     const day = hour * 24;
   
-    // Remaining days
+    // R D
     const days = Math.floor(ms / day);
-    // Remaining hours
+    // R H
     const hours = Math.floor((ms % day) / hour);
-    // Remaining minutes
+    //R M
     const minutes = Math.floor(((ms % day) % hour) / minute);
-    // Remaining seconds
+  // R S
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
   
     return { days, hours, minutes, seconds };
@@ -55,7 +55,7 @@ function startCountDown(){
 
         if (distance <= 0){
             clearInterval(timerId);
-            timer.innerHTML = 'Time is Up!'
+            timer.innerHTML = 'Time is over!'
         }
     }, 1000)
 }
@@ -67,7 +67,7 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
         if(selectedDates[0] < Date.now()){
-           Notify.failure ("Please pick a date in the near  future");
+           Notify.failure ("Please choose a date in the future");
            userDate = new Date();
         }
         else{
