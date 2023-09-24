@@ -1,6 +1,6 @@
 import flatpickr from "flatpickr";
 import 'flatpickr/dist/flatpickr.min.css';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import {Notify} from 'notiflix/build/notiflix-aio';
 
 const calendar = document.querySelector("#datetime-picker");
 const startBttn = document.querySelector("button[data-start]");
@@ -25,13 +25,13 @@ function convertMs(ms) {
     const hour = minute * 60;
     const day = hour * 24;
   
-    // R D
+    // Remaining days
     const days = Math.floor(ms / day);
-    // R H
+    // Remaining hours
     const hours = Math.floor((ms % day) / hour);
-    //R M
+    // Remaining minutes
     const minutes = Math.floor(((ms % day) % hour) / minute);
-  // R S
+    // Remaining seconds
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
   
     return { days, hours, minutes, seconds };
